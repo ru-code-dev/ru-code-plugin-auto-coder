@@ -7,6 +7,8 @@ dist
 .artifacts-plugins
 test-results
 playwright-report
+# The playground's start state is each developer's own; `playground.example.json` is the template.
+playground.json
 
 # ── cross-repo dev link ───────────────────────────────────────────────────────
 # ONE of the two halves is ignored, and the asymmetry is deliberate.
@@ -26,3 +28,4 @@ ru-code-packages
 
 # local dev link to an unpublished SDK checkout (never committed)
 .pnpmfile.cjs
+.playground

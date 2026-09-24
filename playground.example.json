@@ -1,0 +1,11 @@
+{
+  "projects": [
+    { "id": "billing", "name": "Billing", "cwd": "~/work/billing" },
+    { "id": "portal", "name": "Portal", "cwd": "~/work/portal" }
+  ],
+  "activeProject": "billing",
+  "locale": "ru",
+  "theme": "dark",
+  "connection": "ready",
+  "storage": "persist"
+}
