@@ -1,0 +1,33 @@
+/*
+ * ru-code v2 (S39 step 9): the plugin's own sheet is now almost EMPTY, and that is the point.
+ *
+ * The panel is built from controls copied out of `apps/web/src/components/ui/`, and those are
+ * Tailwind utilities against the app's own tokens. `pluginBuildConfig({ styles: { tailwind } })`
+ * compiles them here with the SDK's `tailwind/theme.css` — the app's own `@theme inline` block —
+ * so `bg-background`, `border-border` and `text-muted-foreground` resolve against the app's live
+ * CSS variables and follow its theme switch. The SDK then nests every rule under
+ * `[data-plugin-root="auto-coder"]` (V2-14).
+ *
+ * What is left is the ONE app utility a copied control uses that is not a Tailwind utility and not
+ * a token: `dropdown-glass`, which `select.tsx`'s popup paints itself with. It is declared here
+ * VERBATIM from the app (`apps/web/src/index.css:339-352`, commit 5ad1721b9) because a plugin sheet
+ * is not in the app's `@utility` scan. The variables it reads (`--popover`, `--glass-opacity`,
+ * `--glass-blur`, `--glass-saturation`, `--foreground`) come from the app's document in the app and
+ * from `plugin-sdk/tailwind/palette.css` in the playground — both, so the popup looks the same in
+ * either.
+ */
+
+@utility dropdown-glass {
+  background: color-mix(
+    in srgb,
+    var(--popover) 18%,
+    color-mix(in srgb, var(--popover) var(--glass-opacity), transparent)
+  );
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    background: var(--popover) !important;
+  }
+}

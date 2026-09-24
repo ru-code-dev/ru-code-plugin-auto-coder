@@ -1,0 +1,49 @@
+{
+  "name": "plugin-auto-coder",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsgo -p tsconfig.server.json && tsgo -p tsconfig.web.json && tsgo -p tsconfig.test.json",
+    "test": "vp test run",
+    "build": "tsdown",
+    "dev": "plugin-playground --root .",
+    "test:e2e": "playwright test",
+    "install-local": "plugin-install-local",
+    "lint": "vp lint --report-unused-disable-directives",
+    "fmt": "vp fmt -c .oxfmtrc.json",
+    "fmt:check": "vp fmt --check -c .oxfmtrc.json"
+  },
+  "devDependencies": {
+    "@base-ui/react": "1.6.0",
+    "@effect/tsgo": "0.13.2",
+    "@oxlint/plugins": "^1.63.0",
+    "@playwright/test": "1.60.0",
+    "@smart-tools/plugin-dev": "1.0.1",
+    "@smart-tools/plugin-sdk": "1.0.1",
+    "@tailwindcss/cli": "4.3.3",
+    "@types/node": "24.12.4",
+    "@types/react": "~19.2.14",
+    "@types/react-dom": "~19.2.3",
+    "@typescript/native-preview": "7.0.0-dev.20260604.1",
+    "class-variance-authority": "^0.7.1",
+    "effect": "4.0.0-beta.103",
+    "lucide-react": "^0.564.0",
+    "oxlint": "1.63.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "4.3.3",
+    "tsdown": "0.20.3",
+    "vite-plus": "0.2.2",
+    "zustand": "^5.0.11"
+  },
+  "peerDependencies": {
+    "effect": "^4.0.0-beta.103",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "zustand": "^5.0.11"
+  },
+  "packageManager": "pnpm@10.15.0"
+}

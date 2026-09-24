@@ -1,0 +1,13 @@
+{
+  // The SERVER half. The shape is the SDK's since S49 item 6 — 17 tsconfigs carried the same
+  // `module`/`moduleResolution`/`erasableSyntaxOnly`/`verbatimModuleSyntax` and the same
+  // `@effect/language-service` block. What is left is this plugin's own `include` ; the `.node` base is the one that admits `node:*`.
+  "extends": ["./tsconfig.base.json", "@smart-tools/plugin-sdk/tsconfig/plugin.server.node.json"],
+  "include": [
+    "src/server",
+    "src/constants.ts",
+    "src/contracts.ts",
+    "src/defaults.ts",
+    "src/failures.ts"
+  ]
+}

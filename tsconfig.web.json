@@ -1,0 +1,13 @@
+{
+  // The WEB half. The shape is the SDK's since S49 item 6; what is left is this plugin's own
+  // `include`.
+  "extends": ["./tsconfig.base.json", "@smart-tools/plugin-sdk/tsconfig/plugin.web.json"],
+  "include": [
+    "src/web",
+    "src/constants.ts",
+    "src/contracts.ts",
+    "src/defaults.ts",
+    "src/failures.ts",
+    "src/localization.ts"
+  ]
+}

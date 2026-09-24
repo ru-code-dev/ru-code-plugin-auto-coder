@@ -1,0 +1,28 @@
+node_modules
+dist
+*.tsbuildinfo
+
+# The playground / e2e leavings.
+.artifacts-e2e
+.artifacts-plugins
+test-results
+playwright-report
+
+# ── cross-repo dev link ───────────────────────────────────────────────────────
+# ONE of the two halves is ignored, and the asymmetry is deliberate.
+#
+#  · `ru-code-packages` — a SYMLINK to the local packages checkout. Developer-local:
+#    every machine points it somewhere different, so it is ignored, and it is the line
+#    below.
+#  · `.pnpmfile.cjs` — TRACKED, not ignored. It rewrites every `@smart-tools/*`
+#    dependency onto that symlink, and every clone needs it, because the SDK and the
+#    dev tooling are not published yet. It is INERT without the symlink (`linkActive`
+#    is false), so a clone that has no sibling checkout installs from the registry
+#    unchanged — which is what CI gets, and what happens the day the SDK publishes.
+#
+# See the README, "Local development against unpublished packages", for the two steps
+# and for switching the link off. The pnpmfile's own header says the same thing.
+ru-code-packages
+
+# local dev link to an unpublished SDK checkout (never committed)
+.pnpmfile.cjs

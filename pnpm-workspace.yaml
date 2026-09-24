@@ -1,0 +1,17 @@
+# ru-code S55: a SINGLE-PACKAGE repo — the plugin is the root, so there is no `packages:` glob and
+# no `catalog:`. This file exists for the two settings pnpm reads only from here, and both are
+# carried from the packages repo for the same reason it carries them:
+#
+#  · `patchedDependencies` — the ru-fork effect patch. The app ships a patched `effect`, and a
+#    plugin that resolved an unpatched one would be testing a different runtime from the one that
+#    will load it. The patch file is vendored beside this manifest.
+#  · `peerDependencyRules` — `vite` is aliased to `@voidzero-dev/vite-plus-core` (V2-30), whose
+#    version string is `0.2.2`, so every `vite@^8` peer reads as unmet.
+patchedDependencies:
+  effect@4.0.0-beta.103: patches/effect@4.0.0-beta.103.patch
+
+peerDependencyRules:
+  allowAny:
+    - vite
+  allowedVersions:
+    vite: "*"

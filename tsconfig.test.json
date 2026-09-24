@@ -1,0 +1,7 @@
+{
+  // The SUITE, at full strictness, with `src` riding along so a test can never typecheck against a
+  // stale idea of the thing it tests. The shape is the SDK's since S49 item 6; what is left is this
+  // plugin's own `include`.
+  "extends": ["./tsconfig.base.json", "@smart-tools/plugin-sdk/tsconfig/plugin.test.json"],
+  "include": ["tests", "src", "e2e", "playwright.config.ts", "vite.playground.config.ts"]
+}

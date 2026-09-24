@@ -1,0 +1,17 @@
+{
+  "id": "auto-coder",
+  "name": {
+    "en": "Auto Coder",
+    "ru": "Авто Кодер"
+  },
+  "description": {
+    "en": "Configures and runs the auto-coder for a project, one process at a time, with its output live.",
+    "ru": "Настраивает и запускает авто-кодер для проекта — по одному процессу, с живым выводом."
+  },
+  "version": "1.0.0",
+  "apiVersion": 2,
+  "enabled": false,
+  "server": "server/index.mjs",
+  "web": "web/index.mjs",
+  "styles": "web/styles.css"
+}
