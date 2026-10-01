@@ -50,3 +50,20 @@ describe.skipIf(!dist.hasDist)("the built folder", () => {
     }
   });
 });
+
+// S105: the playground compiles every plugin on its own, so a build line that lost the compiler would
+// leave the page an author measures compiled and the page the app loads not. The bundle cannot tell
+// (the compiled ui-kit and catalog-core it bundles carry memo caches too), so the build config is
+// what is asserted: its web half has the compiler pass from `@smart-tools/plugin-dev/build`.
+describe("the React Compiler", () => {
+  it("is on the web half of the build config (`@smart-tools/plugin-dev/build`)", async () => {
+    type BuildConfig = { readonly platform?: string; readonly plugins?: ReadonlyArray<unknown> };
+    const configs = [
+      (await import("../tsdown.config.ts")).default,
+    ].flat() as ReadonlyArray<BuildConfig>;
+    const web = configs.find((config) => config.platform === "browser");
+    const plugins = await Promise.all(web?.plugins ?? []);
+    const names = plugins.map((plugin) => String((plugin as { readonly name?: unknown }).name));
+    expect(names).toContain("plugin-dev:react-compiler-summary");
+  });
+});

@@ -1,7 +1,8 @@
 import * as Fs from "node:fs";
 import * as Path from "node:path";
 
-import { pluginBuildConfig } from "@smart-tools/plugin-sdk/build";
+// S105: from plugin-dev — the SDK's `pluginBuildConfig` plus the React Compiler on the web half.
+import { pluginBuildConfig } from "@smart-tools/plugin-dev/build";
 
 const root = import.meta.dirname;
 const assetsSource = Path.join(root, "src", "assets");
